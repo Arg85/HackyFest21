@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://kit.fontawesome.com/a2b3da0c65.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        /*  Importrant proprety to be used when want to give scroll effect
+             background-attachment:fixed; */
+        /* body wla is just for third one */
+        body {
+            height: 110vh;
+            scroll-behavior: smooth;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .first {
+            height: 5rem;
+            width: 5rem;
+            margin: 20px;
+            background: red;
+            transition-duration: 600ms;
+            transition-property: background, transform;
+            transition-timing-function: cubic-bezier(1, 0.43, 0.16, 1.18);
+            ;
+        }
+
+        .first:hover {
+            background: blue;
+            transform: rotate(180deg);
+        }
+
+        .first::before {
+            content: "1)";
+            position: absolute;
+            left: 1%;
+            top: 4%;
+        }
+
+        .sec {
+
+            display: flex;
+            height: 150px;
+            width: 104px;
+            gap: 63px;
+            /* overflow hidden is jaruri extra ko chupane k lie */
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .sec ::before {
+            content: "2)";
+            position: absolute;
+            left: 41%;
+            top: 24%;
+
+        }
+
+        .sec h1:nth-child(1) {
+            animation-name: side;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes side {
+            0% {
+                margin-left: 0px;
+
+            }
+
+            50% {
+                margin-left: -125px;
+            }
+
+            75% {
+                margin-left: -268px;
+            }
+
+            100% {
+                margin-left: 0;
+            }
+        }
+
+        .third::before {
+            content: "3)";
+            position: absolute;
+            top: 0;
+            left: 2px;
+        }
+
+        .third {
+            position: relative;
+            background: red;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        .third a {
+            color: black;
+        }
+
+        .third.ranga {
+            background: blue;
+            margin-bottom: 30px;
+            height: 20px;
+            color: white;
+
+        }
+
+        .third.ranga a {
+            color: white;
+        }
+
+        .topy {
+            position: fixed;
+            bottom: 0px;
+            right: 0;
+        }
+
+        .topy button {
+            background: blueviolet;
+            height: 100px;
+            width: 100px;
+        }
+
+        .cont {
+            height: 200px;
+            width: 200px;
+            background: blue;
+            overflow: hidden;
+        }
+
+        .hov {
+            margin: 0 auto;
+            font-size: 12.3em;
+            transition-property: all;
+            transition-duration: .5s;
+            transition-timing-function: cubic-bezier(0, 0.95, 0.24, 0.01);
+
+        }
+
+        .cont:hover .hov {
+            transform: translateY(-100%);
+        }
+
+        .wrapper {
+            height: 15em;
+            width: 15em;
+            margin: 0px auto;
+            /* border:5px solid black; */
+
+            overflow: hidden;
+
+            margin-bottom: 9em;
+        }
+
+        .card {
+            height: 15em;
+            width: 15em;
+            position: relative;
+            /* overflow:hidden; */
+            /* border:5px solid purple; */
+            background: red;
+        }
+
+        .cardy {
+            /* border:5px solid grey; */
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition-property: all;
+            transition-duration: .5s;
+            transition-timing-function: ease;
+
+        }
+
+        /* with extra elemetn */
+        /* .overlay{
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    text-align: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: red;
+    justify-content: center;
+    align-items: center;
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
+}
+.wrapper:hover .overlay{
+top:0;
+left:0;        
+
+} */
+        /* overlay with pseudo elemt */
+        .card:after {
+            /* border:5px solid blue; */
+            content: " “No Miracles. No Mercy. No Redemption. No Heaven. No Hell. No Higher Power. Just Life. Just... Us.”    -Batman";
+            position: absolute;
+            top: 100%;
+            left: 0%;
+            height: 100%;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.7;
+            background: black;
+            color: white;
+            transition-property: transform;
+            transition-duration: .4s;
+            transition-timing-function: ease;
+        }
+
+        .card:hover::after {
+            transform: translateY(-100%);
+        }
+
+        /* .wrapper:hover .card{
+    transform:translateY(-100%);
+} */
+        /* asdasdasdasd */
+        .jsani {
+            width: 200px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .con {
+            background: red;
+            height: 200px;
+            width: 200px;
+            top: -200px;
+            position: absolute;
+            z-index: -1;
+            /* transition-duration: .4s;
+transition-timing-function: ease; */
+        }
+
+        button {
+            z-index: 999;
+        }
+
+        .rectangle {
+            background: blue;
+            width: 500px;
+            height: 200px;
+            position: relative;
+        }
+
+        .square {
+            display: flex;
+            width: 50px;
+            height: 50px;
+            justify-content: center;
+            position: absolute;
+            background: red;
+
+        }
+    .fet{
+        height: 700px;
+        padding:50px;
+        background:red;
+    }
+    #animw{
+        height:200px;
+        width:200px;
+        border:3px solid black;
+        margin:0 auto;
+        display: grid;
+        place-items: center;
+
+    }
+    #section:hover{
+  
+    }
+    #ani{
+      
+        height:40px;
+        width:150px;
+        background: linear-gradient(to right, red 50%, black 50%);
+        background-size: 200% 100%;
+        background-position:right bottom;
+transition: all 0.5s ease-in-out;
+animation-delay: 0.8s;
+    }
+    #ani:hover{
+        background-position:left bottom;
+    }
+    </style>
+    <!-- changes on scroll y -->
+    <section>
+        <div class="third">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#fet">fet</a>
+            <a href="#">asd</a>
+        </div>
+        <!-- first animation start-->
+        <div class="first">
+        </div>
+        <!-- first animation end-->
+
+        <!-- second animation start-->
+        <div class="sec">
+            <h1>Texty 1 this is</h1>
+            <h1>Texty 2 this is</h1>
+            <h1>Texty 3 this is</h1>
+        </div>
+
+        <!-- scroll to top start-->
+        <div class="topy" id="topu">
+            <button>Click me</button>
+        </div>
+
+        <!-- scroll to top end-->
+
+
+        <!-- hover up start-->
+        <div class="cont">
+            <div class="hov">
+                <i class="fas fa-envelope"></i>
+            </div>
+        </div>
+        <!-- hover up end-->
+
+
+        <!-- overlay card -->
+        <div class="wrapper">
+            <div class="card">
+                <img class="cardy" src="https://wallpapercave.com/wp/wp2645092.jpg">
+            </div>
+            <!-- <div class="overlay">
+              <p>Hellow there</p>
+          </div> -->
+        </div>
+
+        <div class="jsani">
+            <button id="butt">asdas</button>
+            <div class="con">
+                <h1>asoidjasd</h1>
+                <h1>asoidjasd</h1>
+                <h1>asoidjasd</h1>
+                <h1>asoidjasd</h1>
+
+            </div>
+        </div>
+        <div class="parent">
+            <div class="square"> </div>
+            <div class="rectangle"></div>
+        </div>
+    </section>
+
+<section id="fet" class="fet">
+    <h1>aosidjasodadsa</h1>
+</section>
+<section id="animw">
+    <button id="ani">Animate</button>
+</section>
+</body>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+<script>
+    $('#topu').click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
+
+      });
+    
+    // scrolle effect toggle
+    // check for screen scroll
+    window.addEventListener("scroll", function () {
+        // get header to add sticky classs on it
+        // add sticky  class on scroll of y
+        document.querySelector(".third").classList.toggle('ranga', window.scrollY > 0);
+    });
+
+
+    //  to go to top of the website
+  
+
+    $("#butt").click(function () {
+        var x = $(".con").position();
+        // console.log(x.top);
+        if (x.top === -200) {
+            $(".con").css("top", "50px");
+            $(".con").css("transition", ".5s cubic-bezier(0, 0.95, 0.24, 0.01)");
+        }
+        else {
+            $(".con").css("top", "-200px");
+            $(".con").css("transition", ".5s cubic-bezier(0, 0.95, 0.24, 0.01)");
+
+        }
+        // $(".con").css("display","block");
+        // $(".con").addClass("act");
+    });
+</script>
+
+</html>
